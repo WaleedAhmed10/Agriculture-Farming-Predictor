@@ -18,14 +18,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR  = os.path.join(BASE_DIR, "src")
 
 
-def run_script(name: str):
+def run_script(name: str) -> None:
     """Run a src/ script and raise on failure."""
     path = os.path.join(SRC_DIR, name)
     print(f"\n{'='*55}")
     print(f"  Running  :  {name}")
     print(f"{'='*55}\n")
-    result = subprocess.run([sys.executable, path], check=True)
-    return result.returncode
+    subprocess.run([sys.executable, path], check=True, cwd=BASE_DIR)
 
 
 def main():
